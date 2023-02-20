@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date("date_retour")->nullable();
             $table->foreignId("biblio_id")->constrained("bibliotheques","id")->onDelete("cascade");
             $table->foreignId("ouvrage_id")->constrained("ouvrages","id")->onDelete("cascade");
-            $table->foreignId("user_id")->constrained("users","id")->onDelete("cascade")->nullable();
+            $table->foreignId("user_id")->nullable()->constrained("users","id")->onDelete("cascade");
             $table->timestamps();
         });
     }
