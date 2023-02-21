@@ -38,6 +38,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="isAdmin" class="col-md-4 col-form-label text-md-end">{{ __('Admin') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="isAdmin" type="string" class="form-control @error('isAdmin') is-invalid @enderror" name="isAdmin" value="{{ old('isAdmin') }}" required autocomplete="isAdmin">
+
+                                @error('isAdmin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
