@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OuvrageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// debut route wahib
+Route::get('listerParAuteur/{auteur}',[OuvrageController::class,'listerParAuteur']);
+
+// fin route wahib

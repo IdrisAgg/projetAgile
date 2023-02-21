@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ouvrage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OuvrageController extends Controller
 {
@@ -81,5 +82,10 @@ class OuvrageController extends Controller
     public function destroy(Ouvrage $ouvrage)
     {
         //
+    }
+
+    public function listerParAuteur($auteur){
+        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->get();
+        dd($ouvrage);
     }
 }

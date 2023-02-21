@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auteur;
+use App\Models\Ouvrage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuteurController extends Controller
 {
