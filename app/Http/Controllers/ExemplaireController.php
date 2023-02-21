@@ -14,14 +14,18 @@ class ExemplaireController extends Controller
      */
 
 
-    public function LesExemplaires()
+    public function LesExemplaires($id)
     {
-        return redirect('home');
+        $lesexemplaires = Exemplaire::find($id);
+        return view('Exemplaire')->with('lesexemplaires',$lesexemplaires);
 
     }
+
     public function index()
     {
-        //
+
+        return view('exemplaire');
+
     }
 
     /**
