@@ -5,9 +5,12 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Auteur;
+use App\Models\Bibliotheque;
+use App\Models\Exemplaire;
 use App\Models\Ouvrage;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Date;
 
 class DatabaseSeeder extends Seeder
 {
@@ -51,5 +54,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Ouvrage::factory(10)-> create();
+        Bibliotheque::factory(10)->create();
+        Exemplaire::factory(10)->create();
+        Exemplaire::create([
+            "date_retour"=>now(),
+            "biblio_id"=>rand(1,10),
+            "ouvrage_id"=>rand(1,10),
+            "user_id"=>14
+        ]);
+        Exemplaire::create([
+            "date_retour"=>"2023-02-25",
+            "biblio_id"=>rand(1,10),
+            "ouvrage_id"=>rand(1,10),
+            "user_id"=>14
+        ]);
+        Exemplaire::create([
+            "date_retour"=>"2023-02-28",
+            "biblio_id"=>rand(1,10),
+            "ouvrage_id"=>rand(1,10),
+            "user_id"=>14
+        ]);
     }
 }
