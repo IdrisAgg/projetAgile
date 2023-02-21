@@ -23,12 +23,10 @@ class OuvrageController extends Controller
 
     public function getByKeywords($keywords){
 
+        var_dump($keywords);
+
         $ouvrages = Ouvrage::all();
          //Il crée en dur une liste de mots cles et la vue les affiche
-         $keywords = [
-            "Naruto",
-            "Victor "
-        ];
         return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
 
     }
