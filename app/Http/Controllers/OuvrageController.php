@@ -15,20 +15,7 @@ class OuvrageController extends Controller
      */
     public function index()
     {
-
-        //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
-        $ouvrages = Ouvrage::all();
-        return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
-    }
-
-    public function getByKeywords($keywords){
-
-        var_dump($keywords);
-
-        $ouvrages = Ouvrage::all();
-         //Il crée en dur une liste de mots cles et la vue les affiche
-        return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
-
+        //
     }
 
     /**
@@ -95,5 +82,10 @@ class OuvrageController extends Controller
     public function destroy(Ouvrage $ouvrage)
     {
         //
+    }
+
+    public function listerParAuteur($auteur){
+        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->get();
+        dd($ouvrage);
     }
 }
