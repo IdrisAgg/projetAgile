@@ -96,5 +96,4 @@ class OuvrageController extends Controller
     {
         //
     }
-
 }

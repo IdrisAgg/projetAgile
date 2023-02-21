@@ -36,3 +36,9 @@ Route::resource('/ouvrage', OuvrageController::class);
 Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
 //Route mamoudou
 
+
+// debut route wahib
+Route::get('listerParAuteur/{auteur}',[OuvrageController::class,'listerParAuteur']);
+
+// fin route wahib
+
