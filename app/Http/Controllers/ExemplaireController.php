@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exemplaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExemplaireController extends Controller
 {
@@ -14,18 +15,12 @@ class ExemplaireController extends Controller
      */
 
 
-    public function LesExemplaires($id)
-    {
-        $lesexemplaires = Exemplaire::find($id);
-        return view('Exemplaire')->with('lesexemplaires',$lesexemplaires);
-
-    }
+  
 
     public function index()
     {
-
-        return view('exemplaire');
-
+        $lesexemplaires = Exemplaire::all();
+        return view('exemplaire.show')->with('exemplaire',$lesexemplaires);
     }
 
     /**

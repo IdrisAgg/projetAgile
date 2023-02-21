@@ -34,5 +34,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 #Route idris
 Route::resource('/exemp',ExemplaireController::class);
-Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires'])->name('exemplaire');
+// Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires']);
 #Route idris
