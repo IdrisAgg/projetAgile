@@ -15,34 +15,20 @@ class OuvrageController extends Controller
      */
     public function index()
     {
+
         //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
-        $ouvrages = [
-            ["id" => 1, "titre" => 'Harry Potter', "auteur" => 'J.k Rowlings'],
-            ["id" => 2, "titre" => 'Naruto Shippuden', "auteur" => 'Masashi Kishimoto '],
-            ["id" => 3, "titre" => 'Naruto film', "auteur" => 'Masashi Kishimoto '],
-            ["id" => 4, "titre" => 'One Piece', "auteur" => 'Eiichiro Oda'],
-            ["id" => 5, "titre" => 'Les misérables', "auteur" => 'Victor Hugo'],
-            ["id" => 4, "titre" => 'Femmes savantes', "auteur" => 'Molière']
-        ];
+        $ouvrages = Ouvrage::all();
         return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
     }
 
     public function getByKeywords($keywords){
 
-        $ouvrages = [
-            ["id" => 1, "titre" => 'Harry Potter', "auteur" => 'J.k Rowlings'],
-            ["id" => 2, "titre" => 'Naruto Shippuden', "auteur" => 'Masashi Kishimoto '],
-            ["id" => 3, "titre" => 'Naruto film', "auteur" => 'Masashi Kishimoto '],
-            ["id" => 4, "titre" => 'One Piece', "auteur" => 'Eiichiro Oda'],
-            ["id" => 5, "titre" => 'Les misérables', "auteur" => 'Victor Hugo'],
-            ["id" => 4, "titre" => 'Femmes savantes', "auteur" => 'Molière']
-        ];
+        $ouvrages = Ouvrage::all();
          //Il crée en dur une liste de mots cles et la vue les affiche
          $keywords = [
             "Naruto",
             "Victor "
         ];
-
         return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
 
     }
