@@ -33,5 +33,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
+Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
 //Route mamoudou
 

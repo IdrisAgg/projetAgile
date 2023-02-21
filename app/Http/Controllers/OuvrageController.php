@@ -14,12 +14,42 @@ class OuvrageController extends Controller
      */
     public function index()
     {
+        //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
         $ouvrages = [
             ["id" => 1, "titre" => 'Harry Potter', "auteur_id" => '1'],
             ["id" => 2, "titre" => 'Naruto Shippuden', "auteur_id" => '2'],
-            ["id" => 2, "titre" => 'One Piece', "auteur_id" => '3'],
-            ["id" => 2, "titre" => 'Les misérables', "auteur_id" => '4'],
-            ["id" => 2, "titre" => 'Femmes savantes', "auteur_id" => '5']
+            ["id" => 3, "titre" => 'Naruto film', "auteur_id" => '3'],
+            ["id" => 4, "titre" => 'One Piece', "auteur_id" => '4'],
+            ["id" => 5, "titre" => 'Les misérables', "auteur_id" => '5'],
+            ["id" => 4, "titre" => 'Femmes savantes', "auteur_id" => '6']
+        ];
+
+        //Il crée en dur une liste de mots cles et la vue les affiche
+        $keywords = [
+            "Harry",
+            "Potter "
+        ];
+
+        //La dao crée la liste des ouvrages répondant aux mots cles mis en dur
+        $reponse = [];
+        foreach ($ouvrages as $key => $value){
+            if ($value) {
+
+            }
+        }
+
+        return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
+    }
+
+    public function getByKeywords($keywords){
+
+        $ouvrages = [
+            ["id" => 1, "titre" => 'Harry Potter', "auteur_id" => '1'],
+            ["id" => 2, "titre" => 'Naruto Shippuden', "auteur_id" => '2'],
+            ["id" => 3, "titre" => 'Naruto film', "auteur_id" => '3'],
+            ["id" => 4, "titre" => 'One Piece', "auteur_id" => '4'],
+            ["id" => 5, "titre" => 'Les misérables', "auteur_id" => '5'],
+            ["id" => 4, "titre" => 'Femmes savantes', "auteur_id" => '6']
         ];
         return view('ouvrage/ouvrage')->with('ouvrages', $ouvrages);
     }
@@ -89,4 +119,5 @@ class OuvrageController extends Controller
     {
         //
     }
+
 }
