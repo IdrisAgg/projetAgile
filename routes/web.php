@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExemplaireController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+#Route idris
+Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires'])->name('exemplaire');
+#Route idris

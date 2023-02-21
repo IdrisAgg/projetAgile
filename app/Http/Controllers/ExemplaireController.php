@@ -12,6 +12,13 @@ class ExemplaireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function LesExemplaires()
+    {
+        return redirect('home');
+
+    }
     public function index()
     {
         //
