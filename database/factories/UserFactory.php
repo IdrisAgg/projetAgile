@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             "isAdmin"=>rand(1,2),
             'email_verified_at' => now(),
-            'password' => '12345678', // password
+            'password' => bcrypt(12345678), // password
             'remember_token' => Str::random(10),
         ];
     }

@@ -32,25 +32,25 @@ class DatabaseSeeder extends Seeder
             'name'=>"idris",
             "isAdmin"=>1,
             "email"=>"idris@gmail.com",
-            "password"=>12345678,
+            "password"=>bcrypt(12345678),
         ]);
         User::create([
             'name'=>"wahib",
             "isAdmin"=>1,
             "email"=>"wahib@gmail.com",
-            "password"=>12345678,
+            "password"=>bcrypt(12345678),
         ]);
         User::create([
             'name'=>"mahmoudou",
             "isAdmin"=>1,
             "email"=>"mahmoudou@gmail.com",
-            "password"=>12345678,
+            "password"=>bcrypt(12345678),
         ]);
         User::create([
             'name'=>"lina",
             "isAdmin"=>1,
             "email"=>"lina@gmail.com",
-            "password"=>12345678,
+            "password"=>bcrypt(12345678) ,
         ]);
 
         Ouvrage::factory(10)-> create();
