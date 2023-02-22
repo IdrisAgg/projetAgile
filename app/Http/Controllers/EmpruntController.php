@@ -10,8 +10,9 @@ class EmpruntController extends Controller
 {
     public function show()
     {
-        $examplaires = Exemplaire::where("user_id", "=", Auth::user()->id);
+        $examplaires = Exemplaire::where("user_id", "=", Auth::user()->id)->get();
+        return view("emprunt.show", ["examplaires" => $examplaires]);
 
-        dd($examplaires);
+        // dd($examplaires);
     }
 }
