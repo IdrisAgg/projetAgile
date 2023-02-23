@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\OuvrageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,9 +31,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+//Route Lina start
+Route::get('/emprunts', [EmpruntController::class, 'show']);
+//Route Lina end
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
 Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
 //Route mamoudou
 
+
+// debut route wahib
+Route::get('listerParAuteur/{auteur}', [OuvrageController::class, 'listerParAuteur']);
+
+// fin route wahib

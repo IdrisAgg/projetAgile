@@ -94,5 +94,9 @@ class OuvrageController extends Controller
          //Il crée en dur une liste de mots cles et la vue les affiche
         return view('ouvrage/listeOuvrage')->with('ouvrages', $ouvrages);
     }
-    
+
+    public function listerParAuteur($auteur){
+        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->get();
+        dd($ouvrage);
+    }
 }
