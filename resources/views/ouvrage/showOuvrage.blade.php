@@ -25,10 +25,9 @@
         <tbody>
             @foreach ($ouvrages as $unOuvrage)
             <tr>
-                <td >{{$unOuvrage["id"]}}</td>
-                <td >{{$unOuvrage["titre"]}}</td>
-                <td >{{$unOuvrage["auteur"]->nom}}</td>
-
+                <td >{{$unOuvrage->id}}</td>
+                <td >{{$unOuvrage->titre}}</td>
+                <td ><a href="listerParAuteur/{{$unOuvrage->auteur_id}}">{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</a></td>
             </tr>
             @endforeach
         </tbody>

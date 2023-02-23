@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            Accueil
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -11,35 +11,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Lister les ouvrages
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Par mot-clé</a></li>
-                        <li><a class="dropdown-item" href="#">Par auteur</a></li>
-                    </ul>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/ouvrage"> Ouvrages</a>
                 </li>
                 @if (Auth::user())
                     @if (Auth::user()->isAdmin == true)
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mes emprunts</a>
+                    </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Gérer les ouvrages</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Gérer les exemplaires d'ouvrage</a>
+                            <a class="nav-link" href="">Gérer les exemplaires</a>
                         </li>
                     @endif
                     @if (Auth::user()->isAdmin == false)
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Gérer mes emprunts
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href={{ route('emprunts') }}>Lister mes emprents</a></li>
-                                <li><a class="dropdown-item" href="#">Prolonger un emprunt</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mes emprunts</a>
                         </li>
                     @endif
                 @endif

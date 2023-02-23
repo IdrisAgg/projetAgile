@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Ouvrage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -95,8 +96,10 @@ class OuvrageController extends Controller
         return view('ouvrage/listeOuvrage')->with('ouvrages', $ouvrages);
     }
 
-    public function listerParAuteur($auteur){
-        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->orWhere("auteurs.prenom","like",'%'.$auteur.'%')->get();
-        dd($ouvrage);
+    public function listerParAuteur($id){
+        $ouvrages = Ouvrage::where("auteur_id","=",$id)->get();
+        $auteur = Auteur::find($id);
+        return view("ouvrage.AuteurOuvrage",["ouvrages"=>$ouvrages,"auteur"=>$auteur]);
+
     }
 }
