@@ -89,11 +89,45 @@ class OuvrageController extends Controller
         //
     }
 
-    public function getByKeywords($keywords){
+    public function getByKeywords(Request $request){
+        $keywords = $_GET["keywords"];
         var_dump($keywords);
-        $ouvrages = Ouvrage::all();
-         //Il crée en dur une liste de mots cles et la vue les affiche
-        return view('ouvrage/listeOuvrage')->with('ouvrages', $ouvrages);
+
+        $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
+        var_dump($splitKeywords);
+
+        // // Mots recherches
+        // $keywords = $splitKeywords;
+        // // Colonnes à comparer
+        // $places = ['o.titre', 'a.prenom', 'a.nom'];
+        // // tous les something LIKE some keyword
+        // $likes = array();
+        // $keywordIndex = 0;
+        // foreach ($keywords as $keyword) {
+        //     $placeIndex = 0;
+        //     foreach ($places as $place) {
+        //         array_push($likes,"($place LIKE :keyword$keywordIndex"."$placeIndex)" );
+        //         $placeIndex++;
+        //     }
+        //     $keywordIndex++;
+        // }
+        // $colonne = join('+', $likes);
+
+        // $sql = "SELECT o.*, $colonne AS nb_occurrences
+        // FROM ouvrages o
+        // INNER JOIN auteurs a ON o.id_auteur = a.id_auteur
+        // HAVING nb_occurrences > 0
+        // ORDER BY nb_occurrences DESC";
+
+        // $params = array();
+        // foreach ($keywords as $keyword) {
+        //     foreach ($places as $place) {
+        //         array_push($params, "%$keyword%");
+        //     }
+        // }
+        // $resultat = DB::select($sql, $params);
+
+        return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
     }
 
     public function listerParAuteur($id){
