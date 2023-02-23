@@ -18,7 +18,6 @@ Ouvrages d'un auteur
             <td >{{$unOuvrage->id}}</td>
             <td >{{$unOuvrage->titre}}</td>
             <td >{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</td>
-
         </tr>
         @endforeach
     </tbody>
