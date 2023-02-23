@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Ouvrage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -93,11 +94,39 @@ class OuvrageController extends Controller
         var_dump($keywords);
 
         $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
-        dd($splitKeywords);
+        var_dump($splitKeywords);
 
-        $ouvragesByKeywords = [];
-        
-         //Il crée en dur une liste de mots cles et la vue les affiche
+        // // Mots recherches
+        // $keywords = $splitKeywords;
+        // // Colonnes à comparer
+        // $places = ['o.titre', 'a.prenom', 'a.nom'];
+        // // tous les something LIKE some keyword
+        // $likes = array();
+        // $keywordIndex = 0;
+        // foreach ($keywords as $keyword) {
+        //     $placeIndex = 0;
+        //     foreach ($places as $place) {
+        //         array_push($likes,"($place LIKE :keyword$keywordIndex"."$placeIndex)" );
+        //         $placeIndex++;
+        //     }
+        //     $keywordIndex++;
+        // }
+        // $colonne = join('+', $likes);
+
+        // $sql = "SELECT o.*, $colonne AS nb_occurrences
+        // FROM ouvrages o
+        // INNER JOIN auteurs a ON o.id_auteur = a.id_auteur
+        // HAVING nb_occurrences > 0
+        // ORDER BY nb_occurrences DESC";
+
+        // $params = array();
+        // foreach ($keywords as $keyword) {
+        //     foreach ($places as $place) {
+        //         array_push($params, "%$keyword%");
+        //     }
+        // }
+        // $resultat = DB::select($sql, $params);
+
         return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
     }
 
