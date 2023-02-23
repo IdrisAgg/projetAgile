@@ -85,7 +85,7 @@ class OuvrageController extends Controller
     }
 
     public function listerParAuteur($auteur){
-        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->get();
+        $ouvrage = DB::table('auteurs')->join("ouvrages","auteurs.id","=",'ouvrages.auteur_id')->where("auteurs.nom","like",'%'.$auteur.'%')->orWhere("auteurs.prenom","like",'%'.$auteur.'%')->get();
         dd($ouvrage);
     }
 }
