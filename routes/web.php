@@ -36,7 +36,7 @@ Route::get('/emprunts', [EmpruntController::class, 'show']);
 //Route Lina end
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
-Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
+Route::get('/searchOuvrage', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
 //Route mamoudou
 
 

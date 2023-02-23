@@ -88,11 +88,11 @@ class OuvrageController extends Controller
         //
     }
 
-    public function getByKeywords($keywords){
-        var_dump($keywords);
+    public function getByKeywords(Request $request){
+        $keywords = $_GET["keywords"];
         $ouvrages = Ouvrage::all();
          //Il crée en dur une liste de mots cles et la vue les affiche
-        return view('ouvrage/listeOuvrage')->with('ouvrages', $ouvrages);
+        return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
     }
 
     public function listerParAuteur($auteur){

@@ -3,20 +3,19 @@
 
 @section('content')
 
-    <h1 class="mb-5 text-center">Les ouvrages </h1>
+    <h1 class="mb-5 text-center">Les ouvrages par mots clés </h1>
+
     <nav class="navbar bg-body-tertiary ">
         <div class="container d-flex justify-content-end">
-
-            <form method="GET" action="/searchOuvrage" class="d-flex" role="search">
+            <form method="GET" action="/" class="d-flex" role="search">
                 @csrf
-                <input name="keywords" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="keyword" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
     </nav>
-
-
-    <table class="table container">
+    <?php var_dump($keywords)  ?>
+    {{-- <table class="table container">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -34,6 +33,6 @@
             </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
 @endsection
