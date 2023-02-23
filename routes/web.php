@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\OuvrageController;
+use App\Http\Controllers\ExemplaireController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +45,9 @@ Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController:
 Route::get('listerParAuteur/{auteur}', [OuvrageController::class, 'listerParAuteur']);
 
 // fin route wahib
+
+
+#Route idris
+Route::resource('/exemp',ExemplaireController::class);
+// Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires']);
+#Route idris

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Exemplaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExemplaireController extends Controller
 {
@@ -12,9 +13,14 @@ class ExemplaireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+  
+
     public function index()
     {
-        //
+        $lesexemplaires = Exemplaire::all();
+        return view('exemplaire.show')->with('exemplaire',$lesexemplaires);
     }
 
     /**
