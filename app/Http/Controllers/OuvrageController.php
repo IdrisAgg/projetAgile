@@ -90,7 +90,13 @@ class OuvrageController extends Controller
 
     public function getByKeywords(Request $request){
         $keywords = $_GET["keywords"];
-        $ouvrages = Ouvrage::all();
+        var_dump($keywords);
+
+        $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
+        dd($splitKeywords);
+
+        $ouvragesByKeywords = [];
+        
          //Il crée en dur une liste de mots cles et la vue les affiche
         return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
     }

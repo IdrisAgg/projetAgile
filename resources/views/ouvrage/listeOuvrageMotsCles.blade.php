@@ -14,7 +14,6 @@
             </form>
         </div>
     </nav>
-    <?php var_dump($keywords)  ?>
     {{-- <table class="table container">
         <thead>
             <tr>
