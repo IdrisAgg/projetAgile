@@ -23,7 +23,7 @@
                             <a class="nav-link" href="">Gérer les ouvrages</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Gérer les exemplaires</a>
+                            <a class="nav-link" href="/exemplaire">Gérer les exemplaires</a>
                         </li>
                     @endif
                     @if (Auth::user()->isAdmin == false)
