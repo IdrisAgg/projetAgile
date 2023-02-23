@@ -3,6 +3,8 @@
 use App\Http\Controllers\EmpruntController;
 use App\Http\Controllers\OuvrageController;
 use App\Http\Controllers\ExemplaireController;
+use App\Http\Middleware\OnlyUser;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +35,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Route Lina start
-Route::get('/emprunts', [EmpruntController::class, 'show']);
+
+Route::get('/emprunts', [EmpruntController::class, 'show'])->middleware(OnlyUser::class);
 //Route Lina end
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
@@ -42,7 +45,7 @@ Route::get('/searchOuvrage/{keywords}', [App\Http\Controllers\OuvrageController:
 
 
 // debut route wahib
-Route::get('listerParAuteur/{auteur}', [OuvrageController::class, 'listerParAuteur']);
+Route::get('listerParAuteur/{id}', [OuvrageController::class, 'listerParAuteur']);
 
 // fin route wahib
 

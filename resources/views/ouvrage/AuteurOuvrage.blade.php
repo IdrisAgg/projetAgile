@@ -3,7 +3,7 @@
 Ouvrages d'un auteur
 @endsection
 @section('content')
-<h1 class="mb-5 text-center">Les ouvrages de <span class="fw-lighter">{{$auteur->nom}}  {{$auteur->prenom}}</span>  </h1>
+<h1 class="mb-5 text-center">Les ouvrages de <span class="fw-lighter" id="nomAuteur">{{$auteur->nom}}  {{$auteur->prenom}}</span>  </h1>
 <table class="table container">
     <thead>
         <tr>
@@ -16,7 +16,7 @@ Ouvrages d'un auteur
         @foreach ($ouvrages as $unOuvrage)
         <tr>
             <td >{{$unOuvrage->id}}</td>
-            <td >{{$unOuvrage->titre}}</td>
+            <td id="ouvrageTitle" >{{$unOuvrage->titre}}</td>
             <td >{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</td>
         </tr>
         @endforeach

@@ -2,6 +2,14 @@
 
 @section('content')
 <div class="container">
+ @if (session()->get("success"))
+<div class="container d-flex justify-content-center">
+    <div class=" col-md-4 alert  alert-danger py-3">
+        {{ session()->get('success') }}
+    </div>
+</div>
+@endif
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
