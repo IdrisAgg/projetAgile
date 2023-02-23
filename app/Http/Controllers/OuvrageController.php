@@ -96,37 +96,36 @@ class OuvrageController extends Controller
         $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
         var_dump($splitKeywords);
 
-        // // Mots recherches
-        // $keywords = $splitKeywords;
-        // // Colonnes à comparer
-        // $places = ['o.titre', 'a.prenom', 'a.nom'];
-        // // tous les something LIKE some keyword
-        // $likes = array();
-        // $keywordIndex = 0;
-        // foreach ($keywords as $keyword) {
-        //     $placeIndex = 0;
-        //     foreach ($places as $place) {
-        //         array_push($likes,"($place LIKE :keyword$keywordIndex"."$placeIndex)" );
-        //         $placeIndex++;
-        //     }
-        //     $keywordIndex++;
-        // }
-        // $colonne = join('+', $likes);
+        // Mots recherches
+        $keywords = $splitKeywords;
+        // Colonnes à comparer
+        $places = ['o.titre', 'a.prenom', 'a.nom'];
+        // tous les something LIKE some keyword
+        $likes = array();
+        $keywordIndex = 0;
+        foreach ($keywords as $keyword) {
+            $placeIndex = 0;
+            foreach ($places as $place) {
+                array_push($likes,"($place LIKE :keyword$keywordIndex"."_$placeIndex)" );
+                $placeIndex++;
+            }
+            $keywordIndex++;
+        }
+        $colonne = join('+', $likes);
 
-        // $sql = "SELECT o.*, $colonne AS nb_occurrences
-        // FROM ouvrages o
-        // INNER JOIN auteurs a ON o.id_auteur = a.id_auteur
-        // HAVING nb_occurrences > 0
-        // ORDER BY nb_occurrences DESC";
-
-        // $params = array();
-        // foreach ($keywords as $keyword) {
-        //     foreach ($places as $place) {
-        //         array_push($params, "%$keyword%");
-        //     }
-        // }
-        // $resultat = DB::select($sql, $params);
-
+        $sql = "SELECT o.*, $colonne AS nb_occurrences
+        FROM ouvrages o
+        INNER JOIN auteurs a ON o.auteur_id = a.id
+        HAVING nb_occurrences > 0
+        ORDER BY nb_occurrences DESC";
+        $params = array();
+        foreach ($keywords as $keyword) {
+            foreach ($places as $place) {
+                array_push($params, "%$keyword%");
+            }
+        }
+        $resultat = DB::select($sql, $params);
+        dd($resultat);
         return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
     }
 
