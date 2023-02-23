@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exemplaire;
+use App\Models\Ouvrage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +20,7 @@ class ExemplaireController extends Controller
 
     public function index()
     {
-        $lesexemplaires = Exemplaire::all();
-        return view('exemplaire.show')->with('exemplaire',$lesexemplaires);
+        
     }
 
     /**
@@ -52,8 +52,8 @@ class ExemplaireController extends Controller
      */
     public function show(Exemplaire $exemplaire)
     {
-        //
-    }
+        
+     }
 
     /**
      * Show the form for editing the specified resource.
@@ -87,5 +87,13 @@ class ExemplaireController extends Controller
     public function destroy(Exemplaire $exemplaire)
     {
         //
+    }
+
+    public function exemplaireOuvrage($id){
+        
+        $exemplaires = Exemplaire::where("ouvrage_id","=",$id)->get();
+        return view("exemplaire.show",['exemplaire'=>$exemplaires]);
+        
+
     }
 }
