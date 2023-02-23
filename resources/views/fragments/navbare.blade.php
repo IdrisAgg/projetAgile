@@ -16,9 +16,9 @@
                 </li>
                 @if (Auth::user())
                     @if (Auth::user()->isAdmin == true)
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mes emprunts</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/emprunts">Mes emprunts</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Gérer les ouvrages</a>
                         </li>

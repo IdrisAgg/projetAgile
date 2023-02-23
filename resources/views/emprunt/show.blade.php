@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- *********** --}}
-    <div style="">
+    <div style="padding-top: 100px;">
         <style>
             body {
                 background-image: url('/images/books.webp');
@@ -13,7 +13,7 @@
         </style>
     </div>
     <div class="container"
-        style="text-align: center; background-color: rgb(0, 0, 0); color:aquamarine; font-size:20px; opacity:.;">
+        style="text-align: center; background-color: rgb(0, 0, 0); color:aquamarine; font-size:20px; opacity:.9;">
         <div class="row justify-content-center">
             <h1>********* LISTER MES EMPRUNTS ********</h1>
             <hr style="">
@@ -22,14 +22,14 @@
             <table class="table" style="text-align: center; background-color: black; color:aquamarine; height: 500px">
                 <thead>
                     <tr>
-                        <th scope="col"><strong>Nom de Ouvrage: </strong></th>
-                        <th scope="col"><strong>Date_retour: </strong></th>
-                        <th scope="col"><strong>Biblio_id: </strong></th>
                         <th scope="col"><strong>Ouvrage id: </strong></th>
-                        <th scope="col"><strong>User_id: </strong></th>
-                        <th scope="col"><strong>Created_at: </strong></th>
-                        <th scope="col"><strong>Updated_at: </strong></th>
-                        {{-- <button class="btn btn-primary">***</button> --}}
+                        <th scope="col"><strong>Titre de Ouvrage: </strong></th>
+                        <th scope="col"><strong>Nom de l'auteur: </strong></th>
+                        <th scope="col"><strong>Biblio_id: </strong></th>
+                        <th scope="col"><strong>Nom de Bibliothèque : </strong></th>
+                        <th scope="col"><strong>Date_retour: </strong></th>
+                        {{-- **************extra*************** --}}
+                        <th scope="col"><strong>Action</strong></th>
                     </tr>
                     <?php
                         foreach ($examplaires as $oneEmprunt) {
@@ -38,13 +38,14 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><?php echo $oneEmprunt->ouvrage->titre; ?></td>
-                        <td><?php echo $oneEmprunt->date_retour; ?></td>
-                        <td><?php echo $oneEmprunt->biblio_id; ?></td>
                         <td><?php echo $oneEmprunt->ouvrage_id; ?></td>
-                        <td><?php echo $oneEmprunt->user_id; ?></td>
-                        <td><?php echo $oneEmprunt->created_at; ?></td>
-                        <td><?php echo $oneEmprunt->updated_at; ?></td>
+                        <td><?php echo $oneEmprunt->ouvrage->titre; ?></td>
+                        <td><?php echo $oneEmprunt->ouvrage->auteur->nom; ?></td>
+                        <td><?php echo $oneEmprunt->biblio_id; ?></td>
+                        <td><?php echo $oneEmprunt->bibliotheque->nom; ?></td>
+                        <td><?php echo $oneEmprunt->date_retour; ?></td>
+                        {{-- **************extra*************** --}}
+                        <td><button class="btn btn-primary">Prolonger</button></td>
                     </tr>
                 </tbody>
                 <?php
