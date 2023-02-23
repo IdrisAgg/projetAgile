@@ -29,7 +29,8 @@
             <tr>
                 <td >{{$unOuvrage->id}}</td>
                 <td >{{$unOuvrage->titre}}</td>
-                <td ><a href="listerParAuteur/{{$unOuvrage->auteur_id}}">{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</a></td>
+                <td id="lienAuteur"><a href="listerParAuteur/{{$unOuvrage->auteur_id}}">{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</a></td>
+                <td><a id="exemplaire" class="btn btn-primary" href="/exemplaire/{{$unOuvrage->id}}">Exemplaires</a> </td>
             </tr>
             @endforeach
         </tbody>
