@@ -7,14 +7,14 @@
 
     <nav class="navbar bg-body-tertiary ">
         <div class="container d-flex justify-content-end">
-            <form method="GET" action="/" class="d-flex" role="search">
+            <form method="GET" action="/searchOuvrage" class="d-flex" role="search">
                 @csrf
-                <input name="keyword" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input name="keywords" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
     </nav>
-    {{-- <table class="table container">
+    <table class="table container">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -23,15 +23,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($ouvrages as $unOuvrage)
+            @foreach ($resultatRecherche as $unResultat)
             <tr>
-                <td >{{$unOuvrage["id"]}}</td>
-                <td >{{$unOuvrage["titre"]}}</td>
-                <td >{{$unOuvrage["auteur"]->nom}}</td>
+                <td >{{$unResultat->id}}</td>
+                <td >{{$unResultat->titre}}</td>
+                <td >{{$unResultat->auteur_id}}</td>
 
             </tr>
             @endforeach
         </tbody>
-    </table> --}}
+    </table>
 
 @endsection
