@@ -102,22 +102,23 @@ class OuvrageController extends Controller
         $places = ['o.titre', 'a.prenom', 'a.nom'];
         // tous les something LIKE some keyword
         $likes = array();
-        $keywordIndex = 0;
+        // Les valeurs liées
+        $values = array();
         foreach ($keywords as $keyword) {
             $placeIndex = 0;
             foreach ($places as $place) {
-                array_push($likes,"($place LIKE :keyword$keywordIndex"."_$placeIndex)" );
-                $placeIndex++;
+                array_push($likes,"($place LIKE ?)");
+                array_push($values, $keyword);
             }
-            $keywordIndex++;
         }
         $colonne = join('+', $likes);
 
-        $sql = "SELECT o.*, $colonne AS nb_occurrences
-        FROM ouvrages o
-        INNER JOIN auteurs a ON o.auteur_id = a.id
-        HAVING nb_occurrences > 0
-        ORDER BY nb_occurrences DESC";
+        $sql =
+            "SELECT o.*, a.*, $colonne AS nb_occurrences
+            FROM ouvrages o
+                INNER JOIN auteurs a ON o.auteur_id = a.id
+            HAVING nb_occurrences > 0
+            ORDER BY nb_occurrences DESC";
         $params = array();
         foreach ($keywords as $keyword) {
             foreach ($places as $place) {
