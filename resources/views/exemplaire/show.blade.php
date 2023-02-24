@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 @section('content')
 <h1 class="text-center">PAGE DES EXEMPLAIRES</h1>
 <div class="container d-flex justify-content-center col-sm-12 col-md-12 col-xl-12 my-5">
@@ -30,16 +30,16 @@
                     <td><?php echo $exemp->id ?></td>
                     <td class="text-success fw-bold">DISPONIBLE</td>
                     <td><strong class=""> reservation</strong></td>
-                    
+
                     <td>
                         <div class="">
-                            <button class="btn btn-danger">SUPPRIMER</button> 
+                            <button class="btn btn-danger">SUPPRIMERR</button>
                             <button class="btn btn-primary">MODIFIER</button>
                         </div>
                     </td>
                 </tr>
             </tbody>
-            
+
 <?php
     }
 }
@@ -57,10 +57,10 @@
                     <td><?php echo $exemp->id ?></td>
                     <td><strong class="text-danger">RESERVÉ</strong></td>
                     <td><strong class="text-success">{{$exemp->date_retour}}</strong></td>
-                    
+
                     <td>
                         <div class="">
-                            <button class="btn btn-danger">SUPPRIMER</button> 
+                            <button class="btn btn-danger">SUPPRIMER</button>
                             <button class="btn btn-primary">MODIFIER</button>
                         </div>
                     </td>
