@@ -10,7 +10,14 @@
                 background-attachment: fixed;
                 background-size: 1500px 1000Px;
             }
+
+            /* trying to fixed the table head */
+            table#myTable {
+                table-layout: fixed;
+            }
         </style>
+    </div>
+
     </div>
     <div class="container"
         style="text-align: center; background-color: rgb(0, 0, 0); color:aquamarine; font-size:20px; opacity:.9;">
@@ -19,9 +26,10 @@
             <hr style="">
         </div>
         <div>
-            <table class="table" style="text-align: center; background-color: black; color:aquamarine; height: 500px">
-                <thead>
-                    <tr>
+            {{-- <div style="table-layout:fixed;"> --}}
+            <table class="table" style="text-align: center; background-color: black; color:aquamarine; height: 500px; ">
+                <thead id="myTable" class="" style="table-layout:fixed;">
+                    <tr style="table-layout:fixed;">
                         <th scope="col"><strong>Ouvrage id: </strong></th>
                         <th scope="col"><strong>Titre de Ouvrage: </strong></th>
                         <th scope="col"><strong>Nom de l'auteur: </strong></th>
@@ -36,6 +44,7 @@
                             if ($oneEmprunt->user_id !== null){
                             ?>
                 </thead>
+                {{-- </div> --}}
                 <tbody>
                     <tr>
                         <td><?php echo $oneEmprunt->ouvrage_id; ?></td>
@@ -45,9 +54,12 @@
                         <td><?php echo $oneEmprunt->bibliotheque->nom; ?></td>
                         <td><?php echo $oneEmprunt->date_retour; ?></td>
                         {{-- **************extra*************** --}}
-                        <td><button class="btn btn-primary">Prolonger</button></td>
+                        <td><button class="btn btn-secondary"> <a href="/modal">Prolonger</a> </button></td>
+
+
                     </tr>
                 </tbody>
+
                 <?php
                    }
                 }

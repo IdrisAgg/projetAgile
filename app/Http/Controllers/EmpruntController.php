@@ -15,4 +15,12 @@ class EmpruntController extends Controller
 
         // dd($examplaires);
     }
+
+    public function modal()
+    {
+
+        return view("emprunt.modal");
+
+        // dd($examplaires);
+    }
 }

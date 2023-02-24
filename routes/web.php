@@ -37,6 +37,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route Lina start
 
 Route::get('/emprunts', [EmpruntController::class, 'show'])->middleware(OnlyUser::class);
+
+Route::get('/modal', function () {
+    return view('emprunt/modalAction');
+});
+
 //Route Lina end
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
@@ -52,7 +57,7 @@ Route::get('listerParAuteur/{id}', [OuvrageController::class, 'listerParAuteur']
 
 #Route idris
 //Route::resource('/exemplaire',ExemplaireController::class);
-Route::get('/exemplaire/{id}',[ExemplaireController::class, 'exemplaireOuvrage']);
+Route::get('/exemplaire/{id}', [ExemplaireController::class, 'exemplaireOuvrage']);
 
 // Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires']);
 #Route idris
