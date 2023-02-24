@@ -14,7 +14,7 @@
             </form>
         </div>
     </nav>
-    <table class="table container">
+    <table class="table container" id="resultats">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -27,7 +27,7 @@
             <tr>
                 <td >{{$unResultat->id}}</td>
                 <td >{{$unResultat->titre}}</td>
-                <td >{{$unResultat->auteur_id}}</td>
+                <td >{{$unResultat->nom}} {{$unResultat->prenom}}</td>
 
             </tr>
             @endforeach
