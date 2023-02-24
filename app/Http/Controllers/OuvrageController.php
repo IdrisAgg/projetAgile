@@ -91,10 +91,10 @@ class OuvrageController extends Controller
 
     public function getByKeywords(Request $request){
         $keywords = $_GET["keywords"];
-        var_dump($keywords);
+        //var_dump($keywords);
 
         $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
-        var_dump($splitKeywords);
+        //var_dump($splitKeywords);
 
         // Mots recherches
         $keywords = $splitKeywords;
@@ -102,31 +102,32 @@ class OuvrageController extends Controller
         $places = ['o.titre', 'a.prenom', 'a.nom'];
         // tous les something LIKE some keyword
         $likes = array();
-        $keywordIndex = 0;
+        // Les valeurs liées
+        $values = array();
         foreach ($keywords as $keyword) {
             $placeIndex = 0;
             foreach ($places as $place) {
-                array_push($likes,"($place LIKE :keyword$keywordIndex"."_$placeIndex)" );
-                $placeIndex++;
+                array_push($likes,"($place LIKE ?)");
+                array_push($values, $keyword);
             }
-            $keywordIndex++;
         }
         $colonne = join('+', $likes);
 
-        $sql = "SELECT o.*, $colonne AS nb_occurrences
-        FROM ouvrages o
-        INNER JOIN auteurs a ON o.auteur_id = a.id
-        HAVING nb_occurrences > 0
-        ORDER BY nb_occurrences DESC";
+        $sql =
+            "SELECT o.*, a.*, $colonne AS nb_occurrences
+            FROM ouvrages o
+                INNER JOIN auteurs a ON o.auteur_id = a.id
+            HAVING nb_occurrences > 0
+            ORDER BY nb_occurrences DESC";
         $params = array();
         foreach ($keywords as $keyword) {
             foreach ($places as $place) {
                 array_push($params, "%$keyword%");
             }
         }
-        $resultat = DB::select($sql, $params);
-        dd($resultat);
-        return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
+        $resultatRecherche = DB::select($sql, $params);
+        //dd($resultatRecherche);
+        return view('ouvrage/listeOuvrageMotsCles')->with('resultatRecherche',$resultatRecherche);
     }
 
     public function listerParAuteur($id){
