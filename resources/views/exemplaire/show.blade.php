@@ -28,8 +28,8 @@
                     <td><?php echo $exemp->ouvrage->titre ?></td>
                     <td><?php echo $exemp->bibliotheque->nom ?></td>
                     <td><?php echo $exemp->id ?></td>
-                    <td><strong class="text-success">DISPONIBLE</strong></td>
-                    <td><strong class="bg-dark"></strong></td>
+                    <td class="text-success fw-bold">DISPONIBLE</td>
+                    <td><strong class=""> reservation</strong></td>
                     
                     <td>
                         <div class="">
