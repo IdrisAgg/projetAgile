@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Emprunt;
 use App\Models\Exemplaire;
 use App\Models\Ouvrage;
 use Illuminate\Http\Request;
@@ -16,11 +17,11 @@ class ExemplaireController extends Controller
      */
 
 
-  
+
 
     public function index()
     {
-        
+
     }
 
     /**
@@ -52,7 +53,7 @@ class ExemplaireController extends Controller
      */
     public function show(Exemplaire $exemplaire)
     {
-        
+
      }
 
     /**
@@ -90,10 +91,11 @@ class ExemplaireController extends Controller
     }
 
     public function exemplaireOuvrage($id){
-        
+
         $exemplaires = Exemplaire::where("ouvrage_id","=",$id)->get();
-        return view("exemplaire.show",['exemplaire'=>$exemplaires]);
-        
+        $emprunts = Emprunt::all();
+        return view("exemplaire.show",['exemplaire'=>$exemplaires,"emprunts"=>$emprunts]);
+
 
     }
 }

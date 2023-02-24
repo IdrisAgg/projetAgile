@@ -17,8 +17,10 @@
 
             <?php
             $num=1;
+
             foreach ($exemplaire as $exemp) {
-                if ($exemp->user_id == null) {
+                $disponible = 'Disponible';
+                $alert = "success";
             ?>
         </thead>
             <tbody>
@@ -28,12 +30,19 @@
                     <td><?php echo $exemp->ouvrage->titre ?></td>
                     <td><?php echo $exemp->bibliotheque->nom ?></td>
                     <td><?php echo $exemp->id ?></td>
-                    <td class="text-success fw-bold">DISPONIBLE</td>
+                    <?php foreach ($emprunts as $emprunt) {
+                         if($emprunt->id==$exemp->id){
+                            $disponible= "Indisponible";
+                            $alert="danger";
+                        }
+                    }?>
+                    <td class="text-{{$alert}} fw-bold">
+                       {{$disponible}}</td>
                     <td><strong class=""> reservation</strong></td>
 
                     <td>
                         <div class="">
-                            <button class="btn btn-danger">SUPPRIMERR</button>
+                            <button class="btn btn-danger">SUPPRIMER</button>
                             <button class="btn btn-primary">MODIFIER</button>
                         </div>
                     </td>
@@ -68,7 +77,6 @@
             </tbody>
 <?php
     }
-}
 ?>
     </table>
 </div>

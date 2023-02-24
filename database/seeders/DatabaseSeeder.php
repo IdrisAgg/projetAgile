@@ -192,28 +192,26 @@ class DatabaseSeeder extends Seeder
         Bibliotheque::factory(10)->create();
         Exemplaire::factory(60)->create();
         Exemplaire::create([
-            "date_retour"=>now(),
             "biblio_id"=>rand(1,10),
             "ouvrage_id"=>rand(1,10),
-            "user_id"=>14
+
         ]);
         Exemplaire::create([
-            "date_retour"=>"2023-02-25",
             "biblio_id"=>rand(1,10),
             "ouvrage_id"=>rand(1,10),
-            "user_id"=>14
+
         ]);
         Exemplaire::create([
-            "date_retour"=>"2023-02-28",
             "biblio_id"=>rand(1,10),
             "ouvrage_id"=>rand(1,10),
-            "user_id"=>14
+
         ]);
         Emprunt::create([
             "id"=>1,
             "date_retour"=>"2023-02-25",
             "nb_prolongation"=>1,
             "user_id"=>14,
+
         ]);
         Emprunt::create([
             "id"=>52,

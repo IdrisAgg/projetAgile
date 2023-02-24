@@ -15,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('exemplaires', function (Blueprint $table) {
             $table->id();
-            $table->date("date_retour")->nullable();
             $table->foreignId("biblio_id")->constrained("bibliotheques","id")->onDelete("cascade");
             $table->foreignId("ouvrage_id")->constrained("ouvrages","id")->onDelete("cascade");
-            $table->foreignId("user_id")->nullable()->constrained("users","id")->onDelete("cascade");
             $table->timestamps();
         });
     }
