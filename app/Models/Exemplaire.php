@@ -8,11 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Exemplaire extends Model
 {
     use HasFactory;
-    public function ouvrage(){
+    public function ouvrage()
+    {
         return $this->belongsTo(Ouvrage::class, "ouvrage_id");
     }
-    public function bibliotheque(){
+    public function bibliotheque()
+    {
         return $this->belongsTo(Bibliotheque::class, "biblio_id");
     }
-   
+
+    public function emprunt()
+    {
+        return $this->belongsTo(Exemplaire::class, 'id');
+    }
 }
