@@ -1,4 +1,4 @@
-@extends('layouts.app')
+    @extends('layouts.app')
 @section('content')
 <h1 class="text-center">PAGE DES EXEMPLAIRES</h1>
 <div class="container d-flex justify-content-center col-sm-12 col-md-12 col-xl-12 my-5">
@@ -20,7 +20,7 @@
 
             foreach ($exemplaire as $exemp) {
                 $disponible = 'Disponible';
-            $alert = "success";
+                $alert = "success";
             ?>
         </thead>
             <tbody>
