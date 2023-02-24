@@ -30,12 +30,11 @@
             <table class="table" style="text-align: center; background-color: black; color:aquamarine; height: 500px; ">
                 <thead id="myTable" class="" style="table-layout:fixed;">
                     <tr style="table-layout:fixed;">
-                        <th scope="col"><strong>Ouvrage id: </strong></th>
                         <th scope="col"><strong>Titre de Ouvrage: </strong></th>
                         <th scope="col"><strong>Nom de l'auteur: </strong></th>
-                        <th scope="col"><strong>Biblio_id: </strong></th>
                         <th scope="col"><strong>Nom de Bibliothèque : </strong></th>
                         <th scope="col"><strong>Date_retour: </strong></th>
+                        <th scope="col"><strong>Nombre de prolongation: </strong></th>
                         {{-- **************extra*************** --}}
                         <th scope="col"><strong>Action</strong></th>
                     </tr>
@@ -47,12 +46,11 @@
                 {{-- </div> --}}
                 <tbody>
                     <tr>
-                        <td><?php echo $oneEmprunt->ouvrage_id; ?></td>
-                        <td><?php echo $oneEmprunt->ouvrage->titre; ?></td>
-                        <td><?php echo $oneEmprunt->ouvrage->auteur->nom; ?></td>
-                        <td><?php echo $oneEmprunt->biblio_id; ?></td>
-                        <td><?php echo $oneEmprunt->bibliotheque->nom; ?></td>
+                        <td><?php echo $oneEmprunt->exemplaire->ouvrage->titre; ?></td>
+                        <td><?php echo $oneEmprunt->exemplaire->ouvrage->auteur->nom; ?></td>
+                        <td><?php echo $oneEmprunt->exemplaire->bibliotheque->nom; ?></td>
                         <td><?php echo $oneEmprunt->date_retour; ?></td>
+                        <td><?php echo $oneEmprunt->nb_prolongation; ?></td>
                         {{-- **************extra*************** --}}
                         <td><button class="btn btn-secondary"> <a href="/modal">Prolonger</a> </button></td>
 
