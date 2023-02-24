@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Auteur;
 use App\Models\Bibliotheque;
+use App\Models\Emprunt;
 use App\Models\Exemplaire;
 use App\Models\Ouvrage;
 use App\Models\User;
@@ -22,7 +23,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //Les utilisateurs
-         \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
         User::create([
             'name'=>"idris",
             "isAdmin"=>1,
@@ -207,6 +208,18 @@ class DatabaseSeeder extends Seeder
             "biblio_id"=>rand(1,10),
             "ouvrage_id"=>rand(1,10),
             "user_id"=>14
+        ]);
+        Emprunt::create([
+            "id"=>1,
+            "date_retour"=>"2023-02-25",
+            "nb_prolongation"=>1,
+            "user_id"=>14,
+        ]);
+        Emprunt::create([
+            "id"=>52,
+            "date_retour"=>"2023-02-28",
+            "nb_prolongation"=>2,
+            "user_id"=>14,
         ]);
     }
 }

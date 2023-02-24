@@ -14,7 +14,5 @@ class Exemplaire extends Model
     public function bibliotheque(){
         return $this->belongsTo(Bibliotheque::class, "biblio_id");
     }
-    public function user(){
-        return $this->belongsTo(User::class, "user_id");
-    }
+   
 }
