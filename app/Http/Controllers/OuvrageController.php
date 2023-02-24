@@ -91,10 +91,10 @@ class OuvrageController extends Controller
 
     public function getByKeywords(Request $request){
         $keywords = $_GET["keywords"];
-        var_dump($keywords);
+        //var_dump($keywords);
 
         $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
-        var_dump($splitKeywords);
+        //var_dump($splitKeywords);
 
         // Mots recherches
         $keywords = $splitKeywords;
@@ -124,9 +124,9 @@ class OuvrageController extends Controller
                 array_push($params, "%$keyword%");
             }
         }
-        $resultat = DB::select($sql, $params);
-        dd($resultat);
-        return view('ouvrage/listeOuvrageMotsCles')->with('keywords',$keywords);
+        $resultatRecherche = DB::select($sql, $params);
+        //dd($resultatRecherche);
+        return view('ouvrage/listeOuvrageMotsCles')->with('resultatRecherche',$resultatRecherche);
     }
 
     public function listerParAuteur($id){
