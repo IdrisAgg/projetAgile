@@ -3,7 +3,7 @@
 
 @section('content')
 <?php $numero =0?>
-    <h1 class="mb-5 text-center">Les ouvrages </h1>
+    <h1 class="mb-5 text-center">Liste d'ouvrages </h1>
     <nav class="navbar bg-body-tertiary ">
         <div class="container d-flex justify-content-end">
 
