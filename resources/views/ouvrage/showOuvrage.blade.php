@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php $numero =0?>
     <h1 class="mb-5 text-center">Les ouvrages </h1>
     <nav class="navbar bg-body-tertiary ">
         <div class="container d-flex justify-content-end">
@@ -26,8 +26,9 @@
         </thead>
         <tbody>
             @foreach ($ouvrages as $unOuvrage)
+            <?php $numero ++?>
             <tr>
-                <td >{{$unOuvrage->id}}</td>
+                <td >{{$numero}}</td>
                 <td >{{$unOuvrage->titre}}</td>
                 <td id="lienAuteur"><a href="listerParAuteur/{{$unOuvrage->auteur_id}}">{{$unOuvrage->auteur->nom}} {{$unOuvrage->auteur->prenom}}</a></td>
                 <td><a id="exemplaire" class="btn btn-primary" href="/exemplaire/{{$unOuvrage->id}}">Exemplaires</a> </td>
