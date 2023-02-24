@@ -17,7 +17,7 @@ class OuvrageController extends Controller
     public function index()
     {
         //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
-        $ouvrages = Ouvrage::all();
+        $ouvrages = Ouvrage::orderBy("titre")->get();
         return view('ouvrage/showOuvrage')->with('ouvrages', $ouvrages);
     }
 

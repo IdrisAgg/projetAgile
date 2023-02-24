@@ -19,7 +19,7 @@ class ExemplaireFactory extends Factory
         return [
             "date_retour"=>null,
             "biblio_id"=>rand(1,10),
-            "ouvrage_id"=>rand(1,10),
+            "ouvrage_id"=>rand(1,20),
             "user_id"=>null
         ];
     }

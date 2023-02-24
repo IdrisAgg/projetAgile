@@ -21,13 +21,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Les utilisateurs
          \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-        Auteur::factory(10)->create();
         User::create([
             'name'=>"idris",
             "isAdmin"=>1,
@@ -53,9 +48,148 @@ class DatabaseSeeder extends Seeder
             "password"=>bcrypt(12345678) ,
         ]);
 
-        Ouvrage::factory(10)-> create();
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+
+        //les auteurs
+        Auteur::create([
+            "nom"=>"Yasmina",
+            "prenom"=>"KHADRA"
+        ]);
+        Auteur::create([
+            "nom"=>"Jules",
+            "prenom"=>"Verne"
+        ]);
+        Auteur::create([
+            "nom"=>"Albert",
+            "prenom"=>"Camus"
+        ]);
+        Auteur::create([
+            "nom"=>"Émile",
+            "prenom"=>"Zola"
+        ]);
+        Auteur::create([
+            "nom"=>"J. K",
+            "prenom"=>"Rowling"
+        ]);
+        Auteur::create([
+            "nom"=>"George R. R",
+            "prenom"=>"Martin"
+        ]);
+        Auteur::create([
+            "nom"=>"Victor",
+            "prenom"=>"Hugo"
+        ]);
+        Auteur::create([
+            "nom"=>"Honoré",
+            "prenom"=>"De Balzac"
+        ]);
+        Auteur::create([
+            "nom"=>"Ernest",
+            "prenom"=>"Hemingway"
+        ]);
+        Auteur::create([
+            "nom"=>"Mahmoud",
+            "prenom"=>"Darwich"
+        ]);
+
+        //Les ouvrage
+        //Ouvrage::factory(10)-> create();
+        Ouvrage::create([
+            "titre"=>"Ce que le jour doit à la nuit",
+            "auteur_id"=>1
+        ]);
+        Ouvrage::create([
+            "titre"=>"L'Atentat",
+            "auteur_id"=>1
+        ]);
+        Ouvrage::create([
+            "titre"=>"Les hirondelles de kaboul",
+            "auteur_id"=>1
+        ]);
+        Ouvrage::create([
+            "titre"=>"Le Tour du monde en quatre-vingts jours",
+            "auteur_id"=>2
+        ]);
+        Ouvrage::create([
+            "titre"=>"Voyage au centre de la Terre",
+            "auteur_id"=>2
+        ]);
+        Ouvrage::create([
+            "titre"=>"Vingt Mille Lieues sous les mers",
+            "auteur_id"=>2
+        ]);
+        Ouvrage::create([
+            "titre"=>"L'Étranger",
+            "auteur_id"=>3
+        ]);
+        Ouvrage::create([
+            "titre"=>"La Peste",
+            "auteur_id"=>3
+        ]);
+        Ouvrage::create([
+            "titre"=>"La Chute",
+            "auteur_id"=>3
+        ]);
+        Ouvrage::create([
+            "titre"=>"Germinal",
+            "auteur_id"=>4
+        ]);
+        Ouvrage::create([
+            "titre"=>"Nana",
+            "auteur_id"=>4
+        ]);
+        Ouvrage::create([
+            "titre"=>"Harry Potter à l'école des sorciers",
+            "auteur_id"=>5
+        ]);
+        Ouvrage::create([
+            "titre"=>"House of the Dragon",
+            "auteur_id"=>6
+        ]);
+        Ouvrage::create([
+            "titre"=>"Game of thrones",
+            "auteur_id"=>6
+        ]);
+        Ouvrage::create([
+            "titre"=>"Les Misérables",
+            "auteur_id"=>7
+        ]);
+        Ouvrage::create([
+            "titre"=>"Notre-Dame de Paris",
+            "auteur_id"=>7
+        ]);
+        Ouvrage::create([
+            "titre"=>"Le Père Goriot",
+            "auteur_id"=>8
+        ]);
+        Ouvrage::create([
+            "titre"=>"Le Vieil Homme et la Mer",
+            "auteur_id"=>9
+        ]);
+        Ouvrage::create([
+            "titre"=>"Pour qui sonne le glas",
+            "auteur_id"=>9
+        ]);
+        Ouvrage::create([
+            "titre"=>"Murale",
+            "auteur_id"=>10
+        ]);
+        Ouvrage::create([
+            "titre"=>"In the Presence of AbsenceLe Vieil Homme et la Mer",
+            "auteur_id"=>10
+        ]);
+        Ouvrage::create([
+            "titre"=>"Une mémoire pour l'oubli",
+            "auteur_id"=>10
+        ]);
+
+
+
         Bibliotheque::factory(10)->create();
-        Exemplaire::factory(10)->create();
+        Exemplaire::factory(60)->create();
         Exemplaire::create([
             "date_retour"=>now(),
             "biblio_id"=>rand(1,10),
