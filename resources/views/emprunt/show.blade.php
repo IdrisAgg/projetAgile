@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->get('unsuccess'))
+        <div class="container d-flex justify-content-center">
+            <div class=" col-md-4 alert  alert-danger py-3">
+                {{ session()->get('unsuccess') }}
+            </div>
+        </div>
+    @endif
     {{-- *********** --}}
     <div style="padding-top: 100px;">
         <style>
@@ -12,7 +19,7 @@
             }
 
             /* trying to fixed the table head */
-            table#myTable {
+            #myTable {
                 table-layout: fixed;
             }
         </style>
@@ -28,7 +35,7 @@
         <div>
             {{-- <div style="table-layout:fixed;"> --}}
             <table class="table" style="text-align: center; background-color: black; color:aquamarine; height: 500px; ">
-                <thead id="myTable" class="" style="table-layout:fixed;">
+                <thead id="" class="">
                     <tr style="table-layout:fixed;">
                         <th scope="col"><strong>Titre de Ouvrage: </strong></th>
                         <th scope="col"><strong>Nom de l'auteur: </strong></th>
@@ -52,8 +59,11 @@
                         <td><?php echo $oneEmprunt->date_retour; ?></td>
                         <td><?php echo $oneEmprunt->nb_prolongation; ?></td>
                         {{-- **************extra*************** --}}
-                        <td><button class="btn btn-secondary"> <a href="/modal">Prolonger</a> </button></td>
-
+                        @if ($oneEmprunt->nb_prolongation < 2 && $oneEmprunt->nb_prolongation > 0)
+                            <td><button class="btn btn-info"> <a style="color:black"
+                                        href="/prolonger/{{ $oneEmprunt->id }}">Prolonger</a> </button>
+                            </td>
+                        @endif
 
                     </tr>
                 </tbody>
