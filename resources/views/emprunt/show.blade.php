@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session()->get('unsuccess'))
+        <div class="container d-flex justify-content-center">
+            <div class=" col-md-4 alert  alert-danger py-3">
+                {{ session()->get('unsuccess') }}
+            </div>
+        </div>
+    @endif
     {{-- *********** --}}
     <div style="padding-top: 100px;">
         <style>
@@ -53,7 +60,8 @@
                         <td><?php echo $oneEmprunt->nb_prolongation; ?></td>
                         {{-- **************extra*************** --}}
                         @if ($oneEmprunt->nb_prolongation < 2 && $oneEmprunt->nb_prolongation > 0)
-                            <td><button class="btn btn-info"> <a style="color:black" href="/modal">Prolonger</a> </button>
+                            <td><button class="btn btn-info"> <a style="color:black"
+                                        href="/prolonger/{{ $oneEmprunt->id }}">Prolonger</a> </button>
                             </td>
                         @endif
 
