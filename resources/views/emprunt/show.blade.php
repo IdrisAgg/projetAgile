@@ -1,3 +1,9 @@
+<!-- before popup data keep  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -9,30 +15,27 @@
         </div>
     @endif
     {{-- *********** --}}
-    <div style="padding-top: 100px;">
-        <style>
-            body {
-                background-image: url('/images/books.webp');
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                background-size: 1500px 1000Px;
-            }
 
-            /* trying to fixed the table head */
-            #myTable {
-                table-layout: fixed;
-            }
-        </style>
-    </div>
+    <style>
+        body {
+            background-image: url('/images/books.webp');
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-size: 1500px 1000Px;
+        }
+
+        /* trying to fixed the table head */
+        #myTable {
+            /* table-layout: fixed; */
+        }
+    </style>
+
 
     </div>
-    <div class="container"
-        style="text-align: center; background-color: rgb(0, 0, 0); color:aquamarine; font-size:20px; opacity:.9;">
+    <div class="container" style="text-align: center; background-color: rgb(0, 0, 0); color:aquamarine; font-size:20px; ">
         <div class="row justify-content-center">
             <h1>********* LISTER MES EMPRUNTS ********</h1>
-            <hr style="">
         </div>
-
         <table class="table" style="text-align: center; background-color: black; color:aquamarine; ">
             <thead id="" class="">
                 <tr style="table-layout:fixed;">
@@ -44,9 +47,9 @@
                     <th scope="col"><strong>Action</strong></th>
                 </tr>
                 <?php
-                        foreach ($examplaires as $oneEmprunt) {
-                            if ($oneEmprunt->user_id !== null){
-                            ?>
+            foreach ($examplaires as $oneEmprunt) {
+                if ($oneEmprunt->user_id !== null) {
+            ?>
             </thead>
             <tbody>
                 <tr>
@@ -56,8 +59,35 @@
                     <td><?php echo $oneEmprunt->date_retour; ?></td>
                     <td><?php echo $oneEmprunt->nb_prolongation; ?></td>
                     @if ($oneEmprunt->nb_prolongation < 2 && $oneEmprunt->nb_prolongation > 0)
-                        <td><button class="btn btn-info"> <a style="color:black"
-                                    href="/prolonger/{{ $oneEmprunt->id }}">Prolonger</a> </button>
+                        <td>
+                            <section class="popup_container">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
+                                    Prolonger
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <h3 style="color:#000">test</h3>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-secondary"
+                                                    data-dismiss="modal">Fermer</button>
+                                                <button type="button" class="btn btn-primary"><a style="color:black"
+                                                        href="/prolonger/{{ $oneEmprunt->id }}">Mettre à jour</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            {{-- <button class="btn btn-info"> <a style="color:black"
+                                    href="/prolonger/{{ $oneEmprunt->id }}">Prolonger</a>
+                                </button> --}}
                         </td>
                     @endif
 
@@ -66,9 +96,9 @@
             </tbody>
 
             <?php
+                }
             }
-         }
-       ?>
+?>
         </table>
 
     </div>
