@@ -19,6 +19,7 @@ class OuvrageController extends Controller
         //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
         $ouvrages = Ouvrage::orderBy("titre")->get();
         return view('ouvrage/showOuvrage')->with('ouvrages', $ouvrages);
+
     }
 
 
@@ -30,7 +31,8 @@ class OuvrageController extends Controller
      */
     public function create()
     {
-        //
+        $auteurs = Auteur::orderBy("nom")->get();
+        return view("ouvrage.formAjoutOuvrage",["auteurs"=>$auteurs]);
     }
 
     /**
@@ -41,7 +43,17 @@ class OuvrageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'titre'=>'required',
+            'auteurChoisi'=>'required'
+        ]);
+        $auteur = Auteur::where('nom', $request->input('auteurChoisi'))->first();
+        $ouvrage = new Ouvrage();
+        $ouvrage->titre = $request->input('titre');
+        $ouvrage->auteur_id = $auteur->id;
+        $ouvrage->save();
+        session()->flash("success", "Ouvrage crée" );
+        return redirect('/ouvrage');
     }
 
     /**
@@ -128,14 +140,10 @@ class OuvrageController extends Controller
         return view('ouvrage/listeOuvrageMotsCles')->with('resultatRecherche',$resultatRecherche);
     }
 
-    public function showFormAjoutOuvrage(){
-        return view("ouvrage.formAjoutOuvrage");
-    }
 
     public function listerParAuteur($id){
         $ouvrages = Ouvrage::where("auteur_id","=",$id)->get();
         $auteur = Auteur::find($id);
         return view("ouvrage.AuteurOuvrage",["ouvrages"=>$ouvrages,"auteur"=>$auteur]);
-
     }
 }
