@@ -46,6 +46,7 @@ Route::get('/modal', function () {
 //Route mamoudou
 Route::resource('/ouvrage', OuvrageController::class);
 Route::get('/searchOuvrage', [App\Http\Controllers\OuvrageController::class, 'getByKeywords']);
+Route::get('/formAjoutOuvrage', [App\Http\Controllers\OuvrageController::class, 'showFormAjoutOuvrage']);
 //Route mamoudou
 
 

@@ -1,12 +1,10 @@
-
 @extends('layouts.app')
-
 @section('content')
 <?php $numero =0?>
     <h1 class="mb-5 text-center">Les ouvrages </h1>
     <nav class="navbar bg-body-tertiary ">
         <div class="container d-flex justify-content-end">
-
+            <a class="btn btn-success mx-5" href="/formAjoutOuvrage"> + Ajouter un ouvrage </a>
             <form method="GET" action="/searchOuvrage" class="d-flex" role="search">
                 @csrf
                 <input name="keywords" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -14,8 +12,6 @@
             </form>
         </div>
     </nav>
-
-
     <table class="table container">
         <thead>
             <tr>
@@ -36,5 +32,4 @@
             @endforeach
         </tbody>
     </table>
-
 @endsection
