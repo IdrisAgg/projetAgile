@@ -9,7 +9,7 @@
     {{-- ***********Alert message --}}
 
     @if (Session::has('success'))
-        <div style="padding: 30px; background-color:rgb(181, 228, 228); text-align: center; font-size: 2em">
+        <div style="padding: 10px; background-color:rgb(181, 228, 228); text-align: center; font-size: 2em">
             <div style="color:rgb(43, 0, 255)" class="alert allert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert">
                     <i class="fa fa-times"></i>
@@ -56,7 +56,6 @@
                 </tr>
                 <?php
             foreach ($examplaires as $oneEmprunt) {
-                if ($oneEmprunt->user_id !== null) {
             ?>
             </thead>
             <tbody>
@@ -71,12 +70,12 @@
                             <section class="popup_container">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#exampleModalCenter">
+                                    data-target="#exampleModalCenter{{ $oneEmprunt->id }}">
                                     Prolonger
                                 </button>
 
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalCenter{{ $oneEmprunt->id }}" tabindex="-1"
+                                    role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <h2>Prolonger Des Livre</h2>
@@ -102,7 +101,6 @@
             </tbody>
             <?php
                 }
-            }
 ?>
         </table>
 
