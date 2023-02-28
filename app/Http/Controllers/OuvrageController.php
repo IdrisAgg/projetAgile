@@ -30,7 +30,7 @@ class OuvrageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

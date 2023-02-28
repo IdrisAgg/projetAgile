@@ -58,6 +58,8 @@ Route::get('listerParAuteur/{id}', [OuvrageController::class, 'listerParAuteur']
 #Route idris
 //Route::resource('/exemplaire',ExemplaireController::class);
 Route::get('/exemplaire/{id}', [ExemplaireController::class, 'exemplaireOuvrage']);
+Route::get('/addExemplaire/{idOuvrage}',[ExemplaireController::class,"addExemplaire"]);
+Route::post('/createExemplaire',[ExemplaireController::class,"createExemplaire"]);
 
 // Route::get('/exemplaire',[App\Http\Controllers\ExemplaireController::class,'LesExemplaires']);
 #Route idris

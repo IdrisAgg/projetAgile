@@ -216,6 +216,12 @@ class DatabaseSeeder extends Seeder
         Emprunt::create([
             "id"=>52,
             "date_retour"=>"2023-02-28",
+            "nb_prolongation"=>0,
+            "user_id"=>14,
+        ]);
+        Emprunt::create([
+            "id"=>15,
+            "date_retour"=>"2023-03-01",
             "nb_prolongation"=>2,
             "user_id"=>14,
         ]);
