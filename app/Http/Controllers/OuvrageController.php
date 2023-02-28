@@ -19,7 +19,6 @@ class OuvrageController extends Controller
         //Le contrôleur crée une liste en dur des ouvrages et la vue l'affiche correctement
         $ouvrages = Ouvrage::orderBy("titre")->get();
         return view('ouvrage/showOuvrage')->with('ouvrages', $ouvrages);
-
     }
 
 
@@ -103,8 +102,10 @@ class OuvrageController extends Controller
 
     public function getByKeywords(Request $request){
         $keywords = $_GET["keywords"];
+        //var_dump($keywords);
 
         $splitKeywords = preg_split('/\s+/', $keywords, -1, PREG_SPLIT_NO_EMPTY);
+        //var_dump($splitKeywords);
 
         // Mots recherches
         $keywords = $splitKeywords;
@@ -136,14 +137,14 @@ class OuvrageController extends Controller
             }
         }
         $resultatRecherche = DB::select($sql, $params);
-
+        //dd($resultatRecherche);
         return view('ouvrage/listeOuvrageMotsCles')->with('resultatRecherche',$resultatRecherche);
     }
-
 
     public function listerParAuteur($id){
         $ouvrages = Ouvrage::where("auteur_id","=",$id)->get();
         $auteur = Auteur::find($id);
         return view("ouvrage.AuteurOuvrage",["ouvrages"=>$ouvrages,"auteur"=>$auteur]);
+
     }
 }

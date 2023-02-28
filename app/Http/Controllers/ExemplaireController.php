@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bibliotheque;
 use App\Models\Emprunt;
 use App\Models\Exemplaire;
 use App\Models\Ouvrage;
@@ -94,8 +95,34 @@ class ExemplaireController extends Controller
 
         $exemplaires = Exemplaire::where("ouvrage_id","=",$id)->get();
         $emprunts = Emprunt::all();
-        return view("exemplaire.show",['exemplaire'=>$exemplaires,"emprunts"=>$emprunts]);
+        return view("exemplaire.show",['exemplaire'=>$exemplaires,"emprunts"=>$emprunts,"idOuvrage"=>$id]);
 
 
+    }
+
+    public function addExemplaire($idOuvrage){
+        $ouvrage = Ouvrage::find($idOuvrage);
+        $biblios = Bibliotheque::all();
+
+        return view('exemplaire.create',["biblios"=>$biblios,"ouvrage"=>$ouvrage]);
+
+    }
+
+    public function createExemplaire(Request $request){
+        $this->validate($request,[
+            'idBiblio'=>["required"]
+        ]);
+
+        $biblio = Bibliotheque::find($request->input("idBiblio"));
+        if ($biblio==null){
+            session()->flash("unsuccess", "La bibliothèque n'existe pas ");
+            return redirect("/addExemplaire".$request->input("idOuvrage"));
+        }
+        $exemplaire = Exemplaire::create([
+            "biblio_id"=>$request->input("idBiblio"),
+            "ouvrage_id"=>$request->input("idOuvrage")
+        ]);
+        session()->flash("success", "L'exemplaire a bien été créé ");
+        return redirect("exemplaire/".$request->input("idOuvrage"));
     }
 }
