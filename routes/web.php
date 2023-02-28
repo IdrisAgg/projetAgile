@@ -37,7 +37,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route Lina start
 
 Route::get('/emprunts', [EmpruntController::class, 'show'])->middleware(OnlyUser::class);
-
+Route::get("/prolonger/{id}", [EmpruntController::class, 'prolonger']);
 Route::get('/modal', function () {
     return view('emprunt/modalAction');
 });
