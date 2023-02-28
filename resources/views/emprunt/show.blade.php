@@ -65,7 +65,7 @@
                     <td><?php echo $oneEmprunt->exemplaire->bibliotheque->nom; ?></td>
                     <td><?php echo $oneEmprunt->date_retour; ?></td>
                     <td><?php echo $oneEmprunt->nb_prolongation; ?></td>
-                    @if ($oneEmprunt->nb_prolongation < 2 && $oneEmprunt->nb_prolongation > 0)
+                    @if ($oneEmprunt->nb_prolongation < 2 && $oneEmprunt->nb_prolongation >= 0)
                         <td>
                             <section class="popup_container">
                                 <!-- Button trigger modal -->
