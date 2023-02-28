@@ -6,14 +6,28 @@
 @extends('layouts.app')
 
 @section('content')
-    @if (session()->get('unsuccess'))
-        <div class="container d-flex justify-content-center">
-            <div class=" col-md-4 alert  alert-danger py-3">
-                {{ session()->get('unsuccess') }}
+    {{-- ***********Alert message --}}
+
+    @if (Session::has('success'))
+        <div style="padding: 30px; background-color:rgb(181, 228, 228); text-align: center; font-size: 2em">
+            <div style="color:rgb(43, 0, 255)" class="alert allert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <i class="fa fa-times"></i>
+                </button>
+                <strong>Success : </strong> {{ session('success') }}
             </div>
         </div>
     @endif
-    {{-- *********** --}}
+
+    @if (Session::has('error'))
+        <div class="alert allert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <i class="fa fa-times"></i>
+            </button>
+            <strong>Error: </strong> {{ session('error') }}
+        </div>
+    @endif
+    {{-- ***********alert message end ******* --}}
 
     <style>
         body {
